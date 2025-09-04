@@ -1,4 +1,10 @@
+Oke! Kalau tanpa Google Sheets, aku buatkan web *statis* yang isinya bisa kamu update langsung di kode HTML-nya.
 
+---
+
+Contoh website replay live member JKT48 tanpa sheet:
+
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,71 +13,57 @@
   <title>Replay Live Member JKT48</title>
   <style>
     body {
-      background: #121212;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      padding: 20px;
+      background: #111;
+      color: #eee;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       max-width: 700px;
-      margin: auto;
+      margin: 20px auto;
+      padding: 20px;
     }
     h1 {
-      text-align: center;
       color: #e91e63;
+      text-align: center;
       margin-bottom: 30px;
     }
-    .replay-card {
-      background: #1e1e1e;
+    .replay {
+      background-color: #222;
+      border-left: 5px solid #e91e63;
       padding: 15px;
       margin-bottom: 15px;
       border-radius: 8px;
-      box-shadow: 0 0 6px #e91e63;
     }
-    .replay-card a {
-      color: #f06292;
+    .replay a {
+      color: #f48fb1;
       font-weight: bold;
       text-decoration: none;
     }
     .date {
-      color: #bbb;
-      font-size: 0.9em;
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
 
-<h1>Replay Otomatis Live Member JKT48</h1>
-<div id="content">Memuat data replay...</div>
+<h1>Replay Live Member JKT48</h1>
 
-<script>
-  const SHEET_ID = 'GANTI_DENGAN_ID_SHEET_KAMU';
-  const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json;
-    .then(res => res.text())
-    .then(data => 
-      const json = JSON.parse(data.substr(47).slice(0, -2));
-      const rows = json.table.rows;
-      let html = ”;
+<div class="replay">
+  <strong>Freya - Seru-seruan Bareng</strong>
+  <div class="date">1 Sep 2025</div>
+  <a href="https://link.jkt48live.com/xxxx" target="_blank">▶ Tonton Replay</a>
+</div>
 
-      rows.forEach(row => 
-        const member = row.c[0]?.v || ”;
-        const judul  = row.c[1]?.v || ”;
-        const tanggal = row.c[2]?.v || ”;
-        const link   = row.c[3]?.v || ”;
+<div class="replay"><strong>Zee - Cerita Hari Ini</strong>
+  <div class="date">30 Agt 2025</div>
+  <a href="https://link.jkt48live.com/yyyy" target="_blank">▶ Tonton Replay</a>
+</div>
 
-        html += `
-          <div class="replay-card">
-            <strong>{member} - judul</strong><br/>
-            <div class="date">{tanggal}</div>
-            <a href="${link}" target="_blank">Tonton Replay</a>
-          </div>
-        `;
-      });
-
-      document.getElementById('content').innerHTML = html;
-    })
-    .catch(() => {
-      document.getElementById('content').innerText = "Gagal mengambil data.";
-    });
-</script>
+<div class="replay">
+  <strong>Mommy Indah - Live Special</strong>
+  <div class="date">29 Agt 2025</div>
+  <a href="https://youtu.be/CZyYn_5vL7M" target="_blank">▶ Tonton Replay</a>
+</div>
 
 </body>
 </html>
